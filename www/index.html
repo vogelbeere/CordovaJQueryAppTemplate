@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/colors.css" id="colors"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="scripts/lib/jquery-3.1.1.min.js"></script> 
+        <!-- load the json2 library (required for jstorage use) -->
+        <script src="scripts/lib/json2.js"></script>
+        <!-- load the jstorage library *-->
+        <script src="scripts/lib/jstorage.js"></script>
+
+        <title>Cordova App Template</title>
+    </head>
+    <body>
+        <div data-role="page" id="welcome-page">
+            <div id="controller-wrapper">
+                <div class="overlay">&nbsp;</div>
+                <div data-role="panel" id="menu" class="animated slideInRight menu">
+                    <div class="ui-panel-inner">
+                        <ul data-role="listview" class="ui-listview">
+                            <li class="ui-li-static ui-body-inherit ui-first-child">
+                                <button id="close_menu" data-rel="close" class="toggle-menu right"><i class="fa fa-close"></i></button>
+                                <a class="show-pane" href="#" id="show-p0"><i class="fa fa-home"></i> Home</a>
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p1">Newsfeed</a><br />
+                                List of events
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p2">Categories</a><br />
+                                Groups of activities
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p3">List of things</a><br />
+                                All the things in a list
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p4">Sections</a><br />
+                                Headings and sections
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p5">About the app</a><br />
+                                Description of the app
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p6">Profile</a><br />
+                                User profile
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p7">Perspectives</a><br />
+                                User profile
+                            </li>
+                            <li class="ui-li-static ui-body-inherit">
+                                <a class="show-pane" href="#" id="show-p8">Log out</a><br />
+                                Sign out of the app
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- /panel -->
+                <div data-role="header" class="header">
+                    <div class="topbar">
+                        <button type="button" id="top-p0" class="show-pane"><i class="fa fa-home"></i></button><!-- home -->
+                        <button type="button" id="btn_back" class="show-pane"><i class="fa fa-arrow-left"></i></button><!-- back -->
+                        <button type="button" id="top-p5" class="show-pane"><i class="fa fa-info-circle"></i></button><!-- about the app -->
+                        <button type="button" id="top-p9" class="show-pane"><i class="fa fa-cog"></i></button><!--  settings/preferences-->
+                        <button type="button" id="btn_refresh" class="show-pane"><i class="fa fa-refresh"></i></button><!-- refresh -->
+                    </div>
+                    <h1 id="app-title">
+                        <a  class="show-pane" href="#" id="showme-p0"><i class="fa fa-home"></i></a> <!-- this can be replaced with the logo of the app -->
+                        App name
+                        <button class="toggle-menu icon right" id="menu_btn"><i class="fa fa-navicon"></i></button><!-- optional depending on whether you have a menu panel or not -->
+                    </h1>
+                    <h2 class="strapline">App subtitle</h2>
+                </div>
+            </div>
+            <div role="main" id="main" class="ui-content">
+                <div id="system-message" class=""></div>
+                <div id="success-message" class=""></div>
+
+                <div data-role="content" id="content">
+                    <div class="pane" id="pane-p0">
+                        <h3>Home</h3>
+                        </div>
+                        <div class="pane" id="pane-p1">
+                            <h3>Newsfeed</h3>
+                            <div class="event-wrapper animated slideInLeft">
+                                <span class="large event" id="event1">
+                                    <i class="fa fa-check"></i><!--select appropriate icons from http://fontawesome.io/icons/ for the type of event-->
+                                </span><span class="event-label">Event details</span>
+                            </div>
+                            <div class="event-wrapper animated slideInLeft">
+
+                                <span class="large event" id="event2">
+                                    <i class="fa fa-trophy"></i>
+                                </span>
+                                <span class="event-label">Event details</span>
+                            </div>
+                            <div class="event-wrapper animated slideInLeft">
+                                <span class="large event" id="event3">
+                                    <i class="fa fa-certificate"></i>
+                                </span>
+                                <span class="event-label">Event details</span>
+                            </div>
+                            <div class="event-wrapper animated slideInLeft">
+                                <span class="large event" id="event3">
+                                    <i class="fa fa-bank"></i>
+                                </span>
+                                <span class="event-label">Event details</span>
+                            </div>
+                        </div>
+                        <div class="pane" id="pane-p2">
+                            <h3>Categories</h3>
+                            <div class="two-col">
+                                <div class="category-box category1 animated flipInX">
+                                    <h4>Category 1</h4>
+                                    <i class="fa fa-certificate fa-2x"></i>
+                                </div>
+                                <div class="category-box category5 animated flipInX">
+                                    <h4>Category 2</h4>
+                                    <i class="fa fa-certificate fa-2x"></i>
+                                </div>
+                            </div>
+                            <div class="two-col">
+                                <div class="category-box category3 animated flipInX">
+                                    <h4>Category 3</h4>
+                                    <i class="fa fa-certificate fa-2x"></i>
+
+                                </div>
+                                <div class="category-box category4 animated flipInX">
+                                    <h4>Category 4</h4>
+                                    <i class="fa fa-certificate fa-2x"></i>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="pane" id="pane-p3">
+                            <h3>List</h3>
+                            <ul class="stripy animated slideInRight">
+                                <li>Item 1</li>
+                                <li>Item 2</li>
+                                <li>Item 3</li>
+                                <li>Item 4</li>
+                                <li>Item 5</li>
+                                <li>Item 6</li>
+                            </ul>
+                        </div>
+                        <div class="pane" id="pane-p4">
+                            <h3>Sections</h3>
+                            <h4 class="sectionheading category1 open" id="section-1">Section 1</h4>
+                            <div class="toggle-content" id="toggle-1">
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                                et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                                id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                            </div>
+                            <h4 class="sectionheading category5 open" id="section-2">Section 2</h4>
+                            <div class="toggle-content" id="toggle-2">
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                                et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                                id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                            </div>
+
+                            <h4 class="sectionheading category3 open" id="section-3">Section 3</h4>
+                            <div class="toggle-content" id="toggle-3">
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                                et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                                id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                            </div>
+
+                            <h4 class="sectionheading category4 open" id="section-4">Section 4</h4>
+                            <div class="toggle-content" id="toggle-4">
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                                et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                                id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                            </div>
+                        </div>
+                        <div class="pane" id="pane-p5">
+                            <h3>About</h3>
+                            <div class="one-col">
+                                <div class="about-box category8 animated slideInLeft">
+                                    <p>
+                                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                                        et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                                        id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="one-col">
+                                <div class="about-box category4 animated slideInLeft">
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+                                </div>
+                                <div class="about-box category1 animated slideInLeft">
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pane" id="pane-p6">
+                            <h3>Profile</h3>
+                            <div class="animated slideInLeft">
+                                <div class="two-col">
+                                    <div class="profile-box">
+                                        <img src="images/placeholder_person.png" alt="Photo" />
+                                    </div>
+                                    <div class="profile-box category1">
+                                        Amelia Mary Earhart<br />
+                                        Occupation: Aviator<br />
+                                        Born 24 July 1897<br />
+                                        Awards: DFC (USA)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="two-col animated slideInLeft">
+                                <p>American aviation pioneer and author. Earhart was the first female aviator to fly solo across the Atlantic Ocean. She received the U.S. Distinguished Flying Cross for this record. She set many other records, wrote best-selling books about her flying experiences and was instrumental in the formation of The Ninety-Nines, an organization for female pilots. In 1935 Earhart became a visiting faculty member at Purdue University as an advisor to aeronautical engineering and a career counselor to women students. She was also a member of the National Woman's Party and an early supporter of the Equal Rights Amendment.</p>
+                            </div>
+                        </div>
+                        <div class="pane" id="pane-p7">
+                            <h3>Perspectives</h3>
+                            <ul class="tabrow">
+                                <li id="tab-1" class="selected">View 1</li>
+                                <li id="tab-2">View 2</li>
+                                <li id="tab-3">View 3</li>
+                                <li id="tab-4">View 4</li>
+                            </ul>
+                            <div class="tabcontent selected" id="tabcontent-1">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu odio turpis. Suspendisse bibendum justo a faucibus mollis. Pellentesque pellentesque mauris vitae augue convallis viverra. Pellentesque leo orci, luctus sit amet nisi at, ultrices interdum sem. Maecenas diam justo, vulputate non nibh vel, congue dictum nisi. Cras quis tellus vel dolor accumsan sodales eget id elit. Nunc ac euismod augue, nec elementum nunc.
+                            </div>
+                            <div class="tabcontent" id="tabcontent-2">
+                                Duis facilisis diam eget tellus cursus malesuada. Etiam placerat magna magna, volutpat finibus augue molestie sit amet. Etiam facilisis odio magna, in tincidunt risus fermentum eget. Suspendisse facilisis ipsum vitae lacus consequat, interdum consectetur sapien eleifend. In eget diam id est mollis pellentesque eget nec tortor. Suspendisse ultricies in sapien nec vehicula. Quisque varius ipsum eros, nec elementum ipsum scelerisque sed. Pellentesque non euismod massa, ac molestie ante. In et lectus vitae arcu sollicitudin auctor.
+                            </div>
+                            <div class="tabcontent" id="tabcontent-3">
+                                Proin mollis mi id velit commodo placerat. Aenean sollicitudin faucibus quam sed imperdiet. Cras eget commodo metus, non dictum nisl. Cras suscipit ultricies odio, vitae eleifend sapien tempus sit amet. Sed id lectus id felis bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </div>
+                            <div class="tabcontent" id="tabcontent-4">
+                                Pellentesque in lobortis libero. Quisque et eros tincidunt, fermentum purus sed, dapibus eros. Proin posuere est non neque luctus, non venenatis elit gravida. Mauris pulvinar risus nec ultrices placerat.
+                            </div>
+                        </div>
+                        <div class="pane" id="pane-p8">
+                            <h3>Log in</h3>
+                            <form id="form_login">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                                <br />
+                                <label for="password">Password</label>
+                                <input type="password" id="password" />
+                                <button type="button" id="btn_login" class="cta button">Log in</button>
+                            </form>
+                            <span id="app-loading" class="centre"></span>
+                        </div>
+                    <div class="pane" id="pane-p9">
+                        <h3>Settings</h3>
+                        <p>
+                            <button type="button" id="btn_logout" class="cta button large"><i class="fa fa-sign-out"></i> Log out</button>
+                        </p>
+                        <h4>Colour scheme</h4>
+                        <button type="button" id="Brookes_Pink" class="cta button large styleswitch" resource="css/colors.css">Pink</button><br/>
+                        <button type="button" id="Brookes_Lime" class="category4 button large styleswitch" resource="css/colors-lime.css">Lime</button><br />
+                        <button type="button" id="Muted_colours" class="category7 button large styleswitch" resource="css/colors-muted.css">Muted colours</button><br />
+                        <button type="button" id="Dark_colours" class="category8 button large styleswitch" resource="css/colors-dark.css">Dark  colours</button><br />
+
+                    </div>
+                    </div>
+                <footer>
+                    <div class="button-container">
+                        <button type="button" id="btn_notify"><i class="fa fa-bell"></i></button><!-- notifications -->
+                    </div>
+                    <div class="button-container">
+                        <button type="button" id="btn_fave"><i class="fa fa-heart"></i></button><!-- favourites -->
+                    </div>
+                    <div class="button-container">
+                        <button type="button" id="btn_tags"><i class="fa fa-tags"></i></button><!-- tags -->
+                    </div>
+                </footer>
+            </div>
+        </div>
+            
+            
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/client_session.js"></script>
+        <script type="text/javascript" src="scripts/styleswitch.js"></script>
+    </body>
+</html>
